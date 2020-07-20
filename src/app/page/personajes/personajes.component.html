@@ -1,0 +1,54 @@
+
+<section class="section">
+	<div class="container">
+  <div class="card" *ngFor = "let personaje of personajes; ">
+    <header class="card-header">
+      <p class="card-header-title">
+        {{personaje.name}}
+      </p>
+      
+    </header>
+    <div class="card-content">
+      <div class="content">
+        {{personaje.origin.name}}
+      </div>
+    </div>
+    <footer class="card-footer">
+      <button class="button is-white" (click) = "seleccionarPersonaje(personaje, true)">Mas informacion</button>
+    </footer>
+  </div>
+    </div>
+
+
+
+</section>
+
+<div class="modal is-active" *ngIf="showModal">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+      <header class="modal-card-head">
+        <p class="modal-card-title">{{personaje?.name}}</p>
+      </header>
+      <section class="modal-card-body">
+        <div class="media">
+            <div class="media-left">
+              <figure class="image is-48x48">
+                <img [src]="personaje?.image" alt="Placeholder image">
+              </figure>
+            </div>
+            <div class="media-content">
+              <p class="title is-4">Status: {{personaje?.status}}</p>
+              <p class="subtitle is-6">Sexo: {{personaje?.gender}}</p>
+              <p class="subtitle is-6">Tipo: {{personaje?.type}}</p>
+              <p class="subtitle is-6">Localizacion: {{personaje?.location.name}}</p>
+              <p class="subtitle is-6">Origen: {{personaje?.origin.name}}</p>
+              
+            </div>
+        </div>
+      </section>
+      <footer class="modal-card-foot">
+
+        <button class="button" (click)="seleccionarPersonaje(null, false)">Cerrar</button>
+      </footer>
+    </div>
+  </div>
